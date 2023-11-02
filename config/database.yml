@@ -1,0 +1,20 @@
+development:
+  adapter: sqlite3
+  database: blog_development
+  host: localhost
+  username: root
+  password:
+
+test:
+  adapter: sqlite3
+  database: blog_test
+  host: localhost
+  username: root
+  password:
+
+production:
+  adapter: sqlite3
+  database: blog_production
+  host: localhost
+  username: root
+  password:
