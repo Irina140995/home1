@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_24_200836) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_04_073451) do
+  create_table "api_tokens", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.boolean "active"
+    t.text "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_api_tokens_on_user_id"
+  end
+
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "short_description"
@@ -27,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_200836) do
   end
 
   create_table "coments", force: :cascade do |t|
+    t.string "author"
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,4 +54,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_200836) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "api_tokens", "users"
 end

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     def index
       @user = User.all
   
-      render json: @user           #current_user
+      render json: @user
     end
   
     def show

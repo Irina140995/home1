@@ -4,15 +4,15 @@ class RegistrationsController < ApplicationController
     @registrations = User.new(registration_params)
 
     if @registrations.save
-      render json: @registration, status: :created, location: @registration
+      render json: @registrations, status: :created, location: @registrations
     else
-      render json: @registration.errors, status: :unprocessable_entity
+      render json: @registrations.errors, status: :unprocessable_entity
     end
   end
 
   private
 
  def registration_params
-   params.require(:registrations).permit(:email, :password)
+   params.require(:registration).permit(:email, :password)
  end
 end
