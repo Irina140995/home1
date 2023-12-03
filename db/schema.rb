@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_04_073451) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_12_122644) do
   create_table "api_tokens", force: :cascade do |t|
     t.integer "user_id", null: false
     t.boolean "active"
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_04_073451) do
     t.datetime "updated_at", null: false
     t.datetime "publish_at"
     t.integer "user_id"
+    t.integer "like_articles"
   end
 
   create_table "articles_coments", id: false, force: :cascade do |t|
@@ -42,7 +43,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_04_073451) do
     t.datetime "updated_at", null: false
     t.string "article_id"
     t.integer "user_id"
+    t.integer "likes_coments"
     t.index ["article_id"], name: "index_coments_on_article_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "article_id"
+    t.integer "coment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

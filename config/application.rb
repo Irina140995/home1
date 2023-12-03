@@ -35,5 +35,9 @@ module Home
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.active_record.encryption.primary_key = "io7ivftuaRdbbxmYmsQsQlFpxX1fqe1U"
+    config.active_record.encryption.deterministic_key = "24pu2msBkwwE9qFVvKE6G1uw5aJaA37k"
+    config.active_record.encryption.key_derivation_salt = "vx9NmFvMtHNvR5ywS0yhyNnGDXfo0sGm"
   end
 end

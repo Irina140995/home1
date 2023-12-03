@@ -50,6 +50,4 @@ class UsersController < ApplicationController
      params.require(:user).permit(:id, :email, :name, :password_digest)
    end
 
-
-
 end

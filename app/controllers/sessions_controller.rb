@@ -6,10 +6,9 @@ class SessionsController < ApplicationController
       user = User.find_by(email: params[:session][:email]) 
 
         if user && user.authenticate(params[:session][:password])
-          #user = current_user
-          #token = current_user.generate_token.create
-        
-          render json: "true"    #token
+          @current_user = user
+          token = ApiToken.create(user: user)
+          render json: token
         else
          render json: "No user"
       end
