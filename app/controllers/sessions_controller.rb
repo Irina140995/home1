@@ -1,16 +1,13 @@
 class SessionsController < ApplicationController
-  
-  
 
-    def create
-      user = User.find_by(email: params[:session][:email]) 
-
-        if user && user.authenticate(params[:session][:password])
-          @current_user = user
-          token = ApiToken.create(user: user)
-          render json: token
-        else
-         render json: "No user"
+  def create
+    user = User.find_by(email: params[:session][:email]) 
+      if user && user.authenticate(params[:session][:password])
+        @current_user = user
+        token = ApiToken.create(user: user)
+        render json: token
+      else
+        render json: "No user"
       end
     end
     

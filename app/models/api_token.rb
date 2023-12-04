@@ -11,7 +11,6 @@ class ApiToken < ApplicationRecord
   private
 
   def generate_token
-   
     self.token = Digest::MD5.hexdigest(SecureRandom.hex)
   end
 end

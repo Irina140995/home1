@@ -1,32 +1,16 @@
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1 do
-      defaults format: :json do 
-        
-        get "home/index", to: "home#index"
-        
-       end
-    end
-  end
-        get "me", to: "me#show"
-        resources :articles 
-        resources :coments
-        resources :users
-        resources :api_tokens
+  defaults format: :json do 
+    get "home/index", to: "home#index"
+    get "me", to: "me#show"
+    resources :articles 
+    resources :coments
+    resources :users
+    resources :api_tokens
        
-        post "registrations", to: "registrations#create"
-        post "sessions", to: "sessions#create"
-        delete "sessions", to: "sessions#destroy"
-
+    post "registrations", to: "registrations#create"
+    post "sessions", to: "sessions#create"
+    delete "sessions", to: "sessions#destroy"
+  end
  
-  
-  
- 
-
-  
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
- 
- root "articles#index"
+  root "articles#index"
 end
