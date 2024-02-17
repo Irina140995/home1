@@ -12,9 +12,8 @@ class BaseController < ActionController::Base
       authenticate_with_http_token do |token, options|
       current_api_token = ApiToken.where(active: true).find_by_token(token)
       @current_user = current_api_token&.user
-      end
     end
-    
+  end
     def handle_bad_authentication
       render json: { message: "Bad credentials" }, status: :unauthorized
     end

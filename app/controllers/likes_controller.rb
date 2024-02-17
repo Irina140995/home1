@@ -1,38 +1,35 @@
 class LikesController < ApplicationController
-    before_action :set_article, only: %i[ show update destroy ]
-    
-    def show
-      render json: @like do serializer LikeSerializer
-      end
-    end
-  
-    def like_articles
-      @like = Like.new(article_id)
+
+  def new
+    @like = Like.new(like_params)
+    @like.save
       if @like.save
-        articles.likes = articles.likes + 1
-        render json: like_articles.count
+        article = @like.article
+        article.likes_article = (article.likes_article || 0) + 1
+        article.save
+        render json: @like
       else
-       render json: like_articles.count
+        render json: "Like not saved."
       end
-    end
-
-    def likes_coments
-      @like = Like.new(coment_id)
-      if @like.save
-        likes_coments + 1
-        render json: likes_coments.count
-      else
-        render json: likes_coments
-     end
-    end
-
-  
-
-    def destroy
-      @like.destroy
-      likes-1
-      render json: likes.count
-    end
-
   end
-  
+
+  def destroy
+    @like = Like.find_by(like_params)
+    @like.destroy
+
+      if @like.destroy
+        likes_article = (likes_article || 1) - 1
+        render json: "Like delete"
+      else
+        render json: "Like not delete."
+      end
+  end
+
+
+  private
+
+  def like_params
+    params.require(:likes).permit(:article_id, :user_id)
+  end
+
+end

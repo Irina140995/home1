@@ -1,6 +1,7 @@
 class ArticleSerializer < ActiveModel::Serializer
-  attributes :title, :like_articles
+  attributes :title, :likes_article
 
-  has_many :coments
-  belongs_to :user
+ # has_many :coments
+ # belongs_to :user
+  has_many :likes
 end

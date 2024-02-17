@@ -4,4 +4,5 @@ class UserSerializer < ActiveModel::Serializer
   has_many :coments
   has_many :articles
   has_many :api_tokens
+  has_many :likes
 end

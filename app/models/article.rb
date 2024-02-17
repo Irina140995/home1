@@ -2,6 +2,6 @@ class Article < ApplicationRecord
   
   has_many :coments  
   belongs_to :user
-  belongs_to :like
+  has_many :likes #, dependent: :destroy
   
 end

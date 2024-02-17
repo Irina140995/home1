@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show update destroy ]
-
+  
   # GET /articles
   def index
     @articles = Article.all
@@ -47,6 +47,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :description, :short_description, :publish_at, user_id)
+      params.require(:article).permit(:title, :description, :short_description, :publish_at, :user_id, :likes_article)
     end
 end
